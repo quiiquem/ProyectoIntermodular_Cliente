@@ -1,0 +1,2 @@
+package com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar
+

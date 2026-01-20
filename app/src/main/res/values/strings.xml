@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProyectoIntermodular_Cliente</string>
+    <string name="pantalla_inicio">Main Menu</string>
+    <string name="pantalla_catalogo">Catalogue</string>
+    <string name="Back">Back</string>
+    <string name="Login">Sign in</string>
+    <string name="Register">Sing up</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoIntermodular_Cliente</string>
+    <string name="pantalla_inicio">Menú Principal</string>
+    <string name="pantalla_catalogo">Catálogo</string>
+    <string name="Back">Atrás</string>
+    <string name="Login">Iniciar Sesión</string>
+    <string name="Register">Registrarme</string>
+</resources>
