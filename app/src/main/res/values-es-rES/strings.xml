@@ -6,4 +6,8 @@
     <string name="Back">Atrás</string>
     <string name="Login">Iniciar Sesión</string>
     <string name="Register">Registrarme</string>
+    <string name="Username">Nombre de Usuario</string>
+    <string name="Password">Contraseña</string>
+    <string name="Email">Gmail</string>
+    <string name="Write_here">Escriba aquí...</string>
 </resources>

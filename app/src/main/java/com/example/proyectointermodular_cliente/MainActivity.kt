@@ -16,9 +16,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoIntermodular_ClienteTheme {
+
                 //Ya iniciado sesion (esto es placeholder hasta que login
                 //tenga la navegacion indicada para ello)
+
                 //MenuNavegacion()
+
+
                 //No tiene cuenta = Se mete en esta pantalla
                 SeleccionarSesion()
                 }
