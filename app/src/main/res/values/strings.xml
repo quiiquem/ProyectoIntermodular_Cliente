@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">ProyectoIntermodular_Cliente</string>
-    <string name="pantalla_inicio">Main Menu</string>
-    <string name="pantalla_catalogo">Catalogue</string>
-    <string name="Back">Back</string>
-    <string name="Login">Sign in</string>
-    <string name="Register">Sing up</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
-    <string name="Email">Email</string>
-    <string name="Write_here">Write here...</string>
+    <string name="Pantalla_inicio">Main Menu</string>
+    <string name="Pantalla_catalogo">Catalogue</string>
+    <string name="back">Back</string>
+    <string name="login">Sign in</string>
+    <string name="register">Sing up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="write_here">Write here...</string>
+    <string name="PopVault" translatable="false">PopVault</string>
+    <string name="mensaje_bienvenida">WELCOME TO POPVAULT!</string>
+    <string name="eslogan">Collect what you love</string>
 </resources>

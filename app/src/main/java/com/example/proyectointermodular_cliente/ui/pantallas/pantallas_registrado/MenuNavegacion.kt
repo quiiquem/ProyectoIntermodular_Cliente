@@ -50,8 +50,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 enum class Pantallas(@StringRes val titulo: Int) {
-    Inicio(titulo = R.string.pantalla_inicio),
-    Catalogo(titulo = R.string.pantalla_catalogo),
+    Inicio(titulo = R.string.Pantalla_inicio),
+    Catalogo(titulo = R.string.Pantalla_catalogo),
 
 }
 
@@ -190,7 +190,7 @@ fun AppTopBar(
                     }) {
                     Icon(
                         imageVector = Icons.Filled.Menu,
-                        contentDescription = stringResource(id = R.string.Back)
+                        contentDescription = stringResource(id = R.string.back)
                     )
                 }
             }

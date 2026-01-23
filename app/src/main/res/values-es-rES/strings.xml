@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ProyectoIntermodular_Cliente</string>
-    <string name="pantalla_inicio">Menú Principal</string>
-    <string name="pantalla_catalogo">Catálogo</string>
-    <string name="Back">Atrás</string>
-    <string name="Login">Iniciar Sesión</string>
-    <string name="Register">Registrarme</string>
-    <string name="Username">Nombre de Usuario</string>
-    <string name="Password">Contraseña</string>
-    <string name="Email">Gmail</string>
-    <string name="Write_here">Escriba aquí...</string>
+    <string name="Pantalla_inicio">Menú Principal</string>
+    <string name="Pantalla_catalogo">Catálogo</string>
+    <string name="back">Atrás</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Registrarme</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Gmail</string>
+    <string name="write_here">Escriba aquí...</string>
+    <string name="mensaje_bienvenida">¡BIENVENIDO A POPVAULT!</string>
+    <string name="eslogan">Coleccoina lo que amas</string>
 </resources>
