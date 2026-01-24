@@ -12,4 +12,6 @@
     <string name="write_here">Escriba aquí...</string>
     <string name="mensaje_bienvenida">¡BIENVENIDO A POPVAULT!</string>
     <string name="eslogan">Coleccoina lo que amas</string>
+    <string name="crear_cuenta_mensaje">¿No tienes una cuenta todavía?</string>
+    <string name="olvidar_password">¿No recuerdas tu contraseña?</string>
 </resources>
