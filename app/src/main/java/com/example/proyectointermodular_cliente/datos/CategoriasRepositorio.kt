@@ -1,0 +1,3 @@
+package com.example.proyectointermodular_cliente.datos
+
+interface CategoriasRepositorio
