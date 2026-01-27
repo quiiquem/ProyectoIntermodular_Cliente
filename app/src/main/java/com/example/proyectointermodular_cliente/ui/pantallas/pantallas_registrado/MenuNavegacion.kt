@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -46,6 +47,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectointermodular_cliente.R
 import com.example.proyectointermodular_cliente.datos.DrawerMenu
+import com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar.SeleccionarSesion
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -53,11 +55,14 @@ enum class Pantallas(@StringRes val titulo: Int) {
     Inicio(titulo = R.string.Pantalla_inicio),
     Catalogo(titulo = R.string.Pantalla_catalogo),
 
+    Login(titulo = R.string.login)
+
 }
 
 val menu = arrayOf(
     DrawerMenu(Icons.Filled.Face, Pantallas.Inicio.titulo, Pantallas.Inicio.name),
     DrawerMenu(Icons.Filled.ShoppingCart, Pantallas.Catalogo.titulo, Pantallas.Catalogo.name)
+
 )
 
 @Composable

@@ -1,7 +1,6 @@
 package com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -27,7 +25,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -44,7 +41,8 @@ import androidx.compose.ui.unit.sp
 import com.example.proyectointermodular_cliente.R
 
 @Composable
-fun SeleccionarSesion(modifier: Modifier = Modifier) {
+fun SeleccionarSesion(modifier: Modifier = Modifier, onIniciarSesion: () -> Unit,
+                      onRegistrar: () -> Unit) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -98,7 +96,9 @@ fun SeleccionarSesion(modifier: Modifier = Modifier) {
             Text(
                 text = stringResource(R.string.username),
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                    modifier = Modifier
+                .padding(start = 10.dp)
             )
 
             var username by remember { mutableStateOf("") }
@@ -119,7 +119,10 @@ fun SeleccionarSesion(modifier: Modifier = Modifier) {
             Text(
                 text = stringResource(R.string.password),
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                        modifier = Modifier
+                        .fillMaxWidth()
+                    .padding(16.dp)
             )
 
             var password by remember { mutableStateOf("") }
@@ -161,7 +164,8 @@ fun SeleccionarSesion(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF1E88E5)
                     ),
-                    onClick = { /*TODO*/ }
+                    //Aun no pasa datos reales!!
+                    onClick = { onIniciarSesion() }
 
                 ) {
                     Text(
@@ -201,7 +205,7 @@ fun SeleccionarSesion(modifier: Modifier = Modifier) {
                 //BOTON DE Registrarme
                 TextButton(
                     modifier = modifier.weight(0.5f),
-                    onClick = { /*TODO*/ }
+                    onClick = { onRegistrar() }
                 ) {
                     Text(
                         text = stringResource(R.string.crear_cuenta_mensaje),

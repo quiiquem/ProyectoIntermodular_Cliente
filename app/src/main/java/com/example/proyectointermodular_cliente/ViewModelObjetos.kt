@@ -1,5 +1,8 @@
 package com.example.proyectointermodular_cliente
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.example.proyectointermodular_cliente.modelo.Producto
 import com.example.proyectointermodular_cliente.modelo.Usuario
 
@@ -10,8 +13,8 @@ sealed interface ProductoUIState{
 }
 
 fun obtenerProductos(){
-    viewModelScope.launch{
-    usuarioUIState.
+    {
+
     }
 }
 
@@ -27,3 +30,21 @@ sealed interface CategoriaUIState{
 
 }
 
+
+//Campos usuario_obligatorios
+var username by mutableStateOf("")
+    private set
+
+var password by mutableStateOf("")
+    private set
+
+var email by mutableStateOf("")
+    private  set
+
+fun Comprobar_Login(username: String, password: String){
+    //TODO
+}
+
+fun Comprobar_Register(username: String, password: String, email: String){
+
+}

@@ -2,11 +2,11 @@ package com.example.proyectointermodular_cliente.modelo
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.util.Date
+
 
 @Serializable
 data class Producto(
-    @SerialName(value = "id")
+    @SerialName(value = "producto_id")
     val id: Int = 0,
     @SerialName(value = "nombre")
     val nombre: String,
@@ -14,10 +14,12 @@ data class Producto(
     val precio: Double,
     @SerialName(value = "stock")
     val stock: Int,
+    //Para evitar problemas por ahora fecha es un string
     @SerialName(value = "fecha_ingreso")
-    val fecha_ingreso: Date,
+    val fecha_ingreso: String,
     @SerialName(value = "ubicacion")
     val ubicacion: String,
-    @SerialName(value = "categoria")
-    val categorias: Categorias
+    //Por ahora es un int , cuando pueda hacer claves ajenas y eso lo cambiare prob
+    @SerialName(value = "categoriaId")
+    val categoriaID: Int
 )

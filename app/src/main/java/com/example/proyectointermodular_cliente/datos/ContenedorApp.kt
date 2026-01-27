@@ -1,6 +1,7 @@
 package com.example.proyectointermodular_cliente.datos
 
 import com.example.proyectointermodular_cliente.conexion.ProductoServicioApi
+import com.example.proyectointermodular_cliente.conexion.UsuarioServicioApi
 import retrofit2.Retrofit
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -10,7 +11,7 @@ interface ContenedorApp {
 
     //Poner todos los repositorios como variables
     val productoRepositorio: ProductoRepositorio
-
+    val usuarioRepositorio: UsuarioRepositorio
 }
 
 //La parte de contenedorapp (que contenga la app)
@@ -34,5 +35,14 @@ private val servicioRetrofitProducto: ProductoServicioApi by lazy {
 }
     override val productoRepositorio: ProductoRepositorio by lazy{
         ConexionProductoRepositorio(servicioRetrofitProducto)
+    }
+
+
+//Usuario
+private val servicioRetrofitUsuario: UsuarioServicioApi by lazy{
+    retrofit.create(UsuarioServicioApi::class.java)
+}
+    override val usuarioRepositorio: UsuarioRepositorio by lazy{
+        ConexionUsuarioRepositorio(servicioRetrofitUsuario)
     }
 }

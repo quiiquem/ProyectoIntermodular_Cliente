@@ -1,0 +1,64 @@
+{
+"usuarios":[
+{
+"usuario_id": 1,
+"nomusuario": "usuariodeejemplo",
+"contrasenya": "unacontrasuperprofesional",
+"email": "emailskibidi@gmail.com"
+},
+{
+"usuario_id": 2,
+"nomusuario": "otrouser",
+"contrasenya": "AAAAAAAAA",
+"email": "conestaseaprueba@gmail.com"
+}],
+"productos":[
+{"producto_id": 1,
+"nombre": "funko pop ironman",
+"precio": 16.99,
+"stock": 120,
+"fecha_alta": "16/02/2025",
+"ubicacion": "Almacen 3",
+"categoriaId": 3
+},
+{"producto_id": 2,
+"nombre": "funko pop spiderman",
+"precio": 16.99,
+"stock": 67,
+"fecha_alta": "18/02/2025",
+"ubicacion": "Almacen 3",
+"categoriaId": 3
+ },
+{"producto_id": 3,
+"nombre": "funko pop satoru gojo",
+"precio": 16.99,
+"stock": 90,
+"fecha_alta": "24/12/2024",
+"ubicacion": "Almacen 2",
+"categoriaId": 2
+ }
+],
+"favoritos":[
+    {"usuario_id": 1, "producto_id": 1},
+    {"usuario_id": 2, "producto_id": 3}
+],
+"clientes":[
+{"id": 1,
+"nombre": "Paco",
+"apellido1": "Perez",
+"apellido2": "",
+"pais": "España",
+"ciudad": "Madrid",
+"codpostal": 50202,
+"provincia": "Madrid^2",
+"telefono": 149070701
+}],
+"categorias":[
+{"id": 1,
+"desc": "Figuras de emmmmm disney por ejemplo"},
+{"id": 2,
+"desc": "Figuras de anime super guays y esas cosas"},
+{"id": 3,
+"desc": "Figuras de marvel y asi"}
+]
+}
