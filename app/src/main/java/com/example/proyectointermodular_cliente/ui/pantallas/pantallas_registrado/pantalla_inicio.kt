@@ -74,8 +74,8 @@ fun PantallaInicial() {
             }
             item {
                 CategoriaCard(
-                    nombre = "DC",
-                    imagenRes = R.drawable.categoria_anime // ← Header azul con Batman
+                    nombre = "CINE Y SERIES",
+                    imagenRes = R.drawable.categoria_cine_y_series // ← Header azul con Batman
                 )
             }
             item {
