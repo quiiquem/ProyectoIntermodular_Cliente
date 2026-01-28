@@ -14,4 +14,9 @@
     <string name="eslogan">Coleccoina lo que amas</string>
     <string name="crear_cuenta_mensaje">¿No tienes una cuenta todavía?</string>
     <string name="olvidar_password">¿No recuerdas tu contraseña?</string>
+    <string name="ya_tener_cuenta_mensaje">¿Ya tienes una cuenta?</string>
+    <string name="crear_cuenta">CREAR CUENTA</string>
+    <string name="descubrir_categorias">Busca por categoría</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="lista_deseos_actual">Tu lista de deseos actual</string>
 </resources>

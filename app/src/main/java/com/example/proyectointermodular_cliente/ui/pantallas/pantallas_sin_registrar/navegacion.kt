@@ -30,6 +30,7 @@ import com.example.proyectointermodular_cliente.ui.pantallas.pantallas_registrad
 enum class Pantallas(@StringRes val titulo: Int) {
     Login(R.string.login),
     Register(R.string.register)
+
 }
 
 @Composable

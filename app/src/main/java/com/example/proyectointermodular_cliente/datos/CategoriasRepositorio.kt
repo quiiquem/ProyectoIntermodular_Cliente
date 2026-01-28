@@ -11,9 +11,9 @@ interface CategoriasRepositorio{
     suspend fun obtenerProductos_Categoria(): List<Producto>
 
 }
-
+/*
 class ConexionCategoriaRepositorio(
     private val categoriaServicioApi: CategoriasServicioApi
 ): CategoriasRepositorio{
     override suspend fun
-}
+}*/

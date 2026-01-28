@@ -16,6 +16,8 @@ import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,15 +56,14 @@ import kotlinx.coroutines.launch
 enum class Pantallas(@StringRes val titulo: Int) {
     Inicio(titulo = R.string.Pantalla_inicio),
     Catalogo(titulo = R.string.Pantalla_catalogo),
-
-    Login(titulo = R.string.login)
+    Favoritos(titulo = R.string.favoritos)
 
 }
 
 val menu = arrayOf(
-    DrawerMenu(Icons.Filled.Face, Pantallas.Inicio.titulo, Pantallas.Inicio.name),
-    DrawerMenu(Icons.Filled.ShoppingCart, Pantallas.Catalogo.titulo, Pantallas.Catalogo.name)
-
+    DrawerMenu(Icons.Filled.ThumbUp, Pantallas.Inicio.titulo, Pantallas.Inicio.name),
+    DrawerMenu(Icons.Filled.ShoppingCart, Pantallas.Catalogo.titulo, Pantallas.Catalogo.name),
+    DrawerMenu(Icons.Filled.Star,Pantallas.Favoritos.titulo, Pantallas.Favoritos.name)
 )
 
 @Composable
@@ -110,10 +111,7 @@ fun MenuNavegacion(
             ) {
                 // Grafo de las rutas
                 composable(route = Pantallas.Inicio.name) {
-                    PantallaInicial(
-                        modifier = Modifier
-                            .fillMaxSize()
-                    )
+                    PantallaInicial()
                 }
                 composable(route = Pantallas.Catalogo.name) {
                     PantallaCatalogo(

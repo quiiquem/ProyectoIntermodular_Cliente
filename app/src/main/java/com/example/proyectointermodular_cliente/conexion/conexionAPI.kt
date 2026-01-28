@@ -1,4 +1,5 @@
 package com.example.proyectointermodular_cliente.conexion
+import com.example.proyectointermodular_cliente.modelo.Cliente
 import com.example.proyectointermodular_cliente.modelo.Favoritos
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -13,12 +14,8 @@ import com.example.proyectointermodular_cliente.modelo.Usuario
 //Productos
 
 interface ProductoServicioApi{
-    @GET("productos")
+    @GET("productos/{id}")
     suspend fun obtenerProductos(): List<Producto>
-
-    @GET("favoritos") //Esto es una idea solo ,tendre que ver si hay que ponerlo en BD o no
-    suspend fun obtenerDeseados(): List<Producto>
-
     @GET("productos/{comprar}") //lo mismo que favorito solo que este dudo bastante que se pueda hacer asi
     suspend fun comprarProductos(): List<Producto>
 }
@@ -26,8 +23,18 @@ interface ProductoServicioApi{
 //Favoritos
 
 interface FavoritosServicioApi{
-    @GET("favoritos/{usuario_id}")
-    suspend fun obtenerFavoritos(@Path("usuarioId") usuarioId: Int): List<Producto>
+
+    @GET("favoritos")
+    suspend fun obtenerFavoritos(): List<Favoritos>
+
+
+   @POST("favoritos/{producto_id}")
+   suspend fun insertarFavorito(
+       @Body favoritos: Favoritos): Favoritos
+
+   @DELETE("favoritos/{producto_id}")
+   suspend fun borrarFavorito(
+       @Body favoritos: Favoritos): Favoritos
 }
 
 
@@ -35,7 +42,7 @@ interface FavoritosServicioApi{
 
 interface UsuarioServicioApi{
 
-    @GET("usuario/{id}")
+    @GET("usuario")
     suspend fun obtenerUsuario(): Usuario
 }
 
@@ -43,11 +50,12 @@ interface UsuarioServicioApi{
 
 interface ClienteServicioApi{
 
+    @GET("cliente")
+    suspend fun obtenerCliente(): Cliente
 }
 
 //Categorias
 
 interface CategoriasServicioApi{
-    @GET("productos/{categoriaId}")
-    suspend fun obtenerProductos_Categoria(@Path("categoriaId") categoriaId: Int): List<Producto>
+
 }

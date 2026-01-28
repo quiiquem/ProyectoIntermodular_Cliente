@@ -3,48 +3,56 @@ package com.example.proyectointermodular_cliente
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.proyectointermodular_cliente.datos.ProductoRepositorio
 import com.example.proyectointermodular_cliente.modelo.Producto
 import com.example.proyectointermodular_cliente.modelo.Usuario
+import kotlinx.coroutines.launch
+import okio.IOException
+import retrofit2.HttpException
 
+
+//PRODUCTOS
 sealed interface ProductoUIState{
-    data class ObtenerProductos(val producto: List<Producto>): ProductoUIState
-    data class ComprarProductos(val producto: List<Producto>): ProductoUIState
-    data class ObtenerFavoritos(val producto: List<Producto>): ProductoUIState
+    data class ObtenerExito(val producto: List<Producto>): ProductoUIState
+    data class CrearExito(val producto: List<Producto>): ProductoUIState
+
+    object Error: ProductoUIState
+    object Cargando: ProductoUIState
 }
 
-fun obtenerProductos(){
-    {
+class ProductoViewModel(private val productoRepositorio: ProductoRepositorio) : ViewModel() {
+    var productoUIState: ProductoUIState by mutableStateOf(ProductoUIState.Cargando)
+        private set
 
+
+    fun obtenerProductos() {
+        viewModelScope.launch {
+            productoUIState = ProductoUIState.Cargando
+            productoUIState = try{
+                val listaProductos = productoRepositorio.obtenerProductos()
+                ProductoUIState.ObtenerExito(listaProductos)
+            } catch (e : IOException){
+                ProductoUIState.Error
+            } catch (e: HttpException){
+                ProductoUIState.Error
+            }
+        }
     }
-}
 
-sealed interface UsuarioUIState{
-    data class ObtenerDatos(val usuario: Usuario): UsuarioUIState
-}
-
-sealed interface ClienteUIState{
-
-}
-
-sealed interface CategoriaUIState{
-
-}
-
-
-//Campos usuario_obligatorios
-var username by mutableStateOf("")
-    private set
-
-var password by mutableStateOf("")
-    private set
-
-var email by mutableStateOf("")
-    private  set
-
-fun Comprobar_Login(username: String, password: String){
-    //TODO
-}
-
-fun Comprobar_Register(username: String, password: String, email: String){
-
-}
+/*
+    companion object{
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val aplicacion = (this[APPLICATION_KEY] as ProductoAplicacion)
+                val productoRepositorio = aplicacion..productoRepositorio
+                ProductoViewModel(productoRepositorio = productoRepositorio)
+            }
+        }
+    }
+*/}

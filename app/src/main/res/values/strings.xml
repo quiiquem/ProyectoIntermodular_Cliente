@@ -14,4 +14,9 @@
     <string name="eslogan">Collect what you love</string>
     <string name="crear_cuenta_mensaje">Dont have an account yet?</string>
     <string name="olvidar_password">Don\'t remember your password?</string>
+    <string name="ya_tener_cuenta_mensaje">Already have an account?</string>
+    <string name="crear_cuenta">CREATE ACCOUNT</string>
+    <string name="descubrir_categorias">Search by category</string>
+    <string name="favoritos">Favourites</string>
+    <string name="lista_deseos_actual">Your current wishlist</string>
 </resources>

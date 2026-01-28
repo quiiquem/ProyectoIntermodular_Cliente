@@ -15,7 +15,7 @@ data class Producto(
     @SerialName(value = "stock")
     val stock: Int,
     //Para evitar problemas por ahora fecha es un string
-    @SerialName(value = "fecha_ingreso")
+    @SerialName(value = "fecha_alta")
     val fecha_ingreso: String,
     @SerialName(value = "ubicacion")
     val ubicacion: String,
