@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface UsuarioRepositorio{
 
-    suspend fun obtenerUsuario(@Path("id") usuarioId: Int): Usuario
+    suspend fun obtenerUsuarios(): List<Usuario>
 }
 
 
@@ -16,7 +16,8 @@ class ConexionUsuarioRepositorio(
 
     private val usuarioServicioApi: UsuarioServicioApi
 ): UsuarioRepositorio{
-    override suspend fun obtenerUsuario(@Path("id")usuarioId: Int): Usuario =
+
+    override suspend fun obtenerUsuarios(): List<Usuario> =
         usuarioServicioApi.obtenerUsuario()
 }
 

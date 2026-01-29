@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--MUY IMPORTANTE: NAME y LA CONEXION SON OBLIGATORIAS SI NO PODRA CONECTAR AL JSON-->
+<!--usescleartextraffic para tener conexion http permitido-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:usesCleartextTraffic="true"
+        android:name=".Proyecto_Aplicacion"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

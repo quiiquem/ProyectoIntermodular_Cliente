@@ -14,9 +14,9 @@ import com.example.proyectointermodular_cliente.modelo.Usuario
 //Productos
 
 interface ProductoServicioApi{
-    @GET("productos/{id}")
+    @GET("productos")
     suspend fun obtenerProductos(): List<Producto>
-    @GET("productos/{comprar}") //lo mismo que favorito solo que este dudo bastante que se pueda hacer asi
+    @GET("productos") //lo mismo que favorito solo que este dudo bastante que se pueda hacer asi
     suspend fun comprarProductos(): List<Producto>
 }
 
@@ -43,7 +43,7 @@ interface FavoritosServicioApi{
 interface UsuarioServicioApi{
 
     @GET("usuario")
-    suspend fun obtenerUsuario(): Usuario
+    suspend fun obtenerUsuario(): List<Usuario>
 }
 
 //Cliente

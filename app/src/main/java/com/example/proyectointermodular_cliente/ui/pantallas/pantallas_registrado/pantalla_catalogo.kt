@@ -1,6 +1,8 @@
 package com.example.proyectointermodular_cliente.ui.pantallas.pantallas_registrado
 
 import android.R.attr.text
+import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,41 +13,59 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.proyectointermodular_cliente.ProductoUIState
+import com.example.proyectointermodular_cliente.R
 import com.example.proyectointermodular_cliente.modelo.Producto
 
+
+
 @Composable
-fun PantallaCatalogo( modifier: Modifier = Modifier,
+fun PantallaCatalogo(
+    modifier: Modifier = Modifier,
     productoUIState: ProductoUIState,
-                      onProductosObtenidos: () -> Unit){
+    obtenerProductos: () -> Unit
+) {
 
-    LazyColumn(modifier = modifier.fillMaxSize()){
+    LaunchedEffect(Unit) {
+        obtenerProductos()
+    }
 
-        item {
-            when (productoUIState) {
-                is ProductoUIState.Cargando -> PantallaCargando(modifier = modifier.fillMaxSize())
-                is ProductoUIState.Error -> PantallaError(modifier = modifier.fillMaxSize())
-                is ProductoUIState.ObtenerExito -> PantallaLista(modifier = Modifier.fillMaxSize(),
-                    lista = productoUIState.producto)
+    when (productoUIState) {
+        is ProductoUIState.Cargando -> PantallaCargando(modifier = modifier.fillMaxSize())
+        is ProductoUIState.Error -> PantallaError(modifier = modifier.fillMaxSize())
+        is ProductoUIState.Exito -> PantallaLista(
+            modifier = modifier.fillMaxSize(),
+            lista = productoUIState.productos
+        )
+    }
+}
 
-                is ProductoUIState.CrearExito -> onProductosObtenidos()
-            }
-        }
+@Composable
+fun PantallaCargando(modifier: Modifier = Modifier){
+    Box(modifier = Modifier.fillMaxSize())
+    {
+        Image(
+            painter = painterResource(R.drawable.cargando),
+            contentDescription = null,
+            contentScale = ContentScale.Crop)
     }
 }
 
 
 @Composable
-fun PantallaCargando(modifier: Modifier = Modifier){
-    Text("placeholder de pantalla carga")
-}
-
-
-@Composable
 fun PantallaError(modifier: Modifier = Modifier){
-    Text("placeholder de pantalla error")
+    Box(modifier = Modifier.fillMaxSize())
+    {
+        Image(
+            painter = painterResource(R.drawable.error),
+            contentDescription = null,
+            contentScale = ContentScale.Crop)
+    }
 }
 
 @Composable

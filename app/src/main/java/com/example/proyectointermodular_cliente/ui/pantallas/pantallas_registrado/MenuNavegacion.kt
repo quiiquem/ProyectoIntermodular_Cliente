@@ -1,5 +1,6 @@
 package com.example.proyectointermodular_cliente.ui.pantallas.pantallas_registrado
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -118,11 +119,10 @@ fun MenuNavegacion(
                 }
                 composable(route = Pantallas.Catalogo.name) {
                     val viewModel: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory)
-
                     PantallaCatalogo(
                         modifier = Modifier.fillMaxSize(),
-                        productoUIState = viewModel.productoUIState,  // ← Acceso DIRECTO
-                        onProductosObtenidos = { viewModel.obtenerProductos() }
+                        productoUIState = viewModel.productoUIState,
+                        obtenerProductos = { viewModel.obtenerProductos()}
                     )
                 }
             }
