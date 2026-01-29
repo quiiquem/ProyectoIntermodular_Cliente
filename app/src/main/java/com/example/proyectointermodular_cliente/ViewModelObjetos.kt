@@ -30,7 +30,7 @@ class ProductoViewModel(private val productoRepositorio: ProductoRepositorio) : 
     var productoUIState: ProductoUIState by mutableStateOf(ProductoUIState.Cargando)
         private set
 
-
+//Funcion obtener productos
     fun obtenerProductos() {
         viewModelScope.launch {
             productoUIState = ProductoUIState.Cargando
@@ -45,14 +45,14 @@ class ProductoViewModel(private val productoRepositorio: ProductoRepositorio) : 
         }
     }
 
-/*
-    companion object{
+  //Factory para conectarlo a la aplicacion y poder hacer funciones
+    companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val aplicacion = (this[APPLICATION_KEY] as ProductoAplicacion)
-                val productoRepositorio = aplicacion..productoRepositorio
+                val aplicacion = (this[APPLICATION_KEY] as Proyecto_Aplicacion)
+                val productoRepositorio = aplicacion.contenedor.productoRepositorio
                 ProductoViewModel(productoRepositorio = productoRepositorio)
             }
         }
     }
-*/}
+}

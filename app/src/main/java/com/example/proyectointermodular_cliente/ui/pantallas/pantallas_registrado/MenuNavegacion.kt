@@ -42,11 +42,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.compose.onPrimaryDark
+import com.example.proyectointermodular_cliente.ProductoViewModel
 import com.example.proyectointermodular_cliente.R
 import com.example.proyectointermodular_cliente.datos.DrawerMenu
 import com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar.SeleccionarSesion
@@ -114,9 +117,12 @@ fun MenuNavegacion(
                     PantallaInicial()
                 }
                 composable(route = Pantallas.Catalogo.name) {
+                    val viewModel: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory)
+
                     PantallaCatalogo(
-                        modifier = Modifier
-                            .fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
+                        productoUIState = viewModel.productoUIState,  // ← Acceso DIRECTO
+                        onProductosObtenidos = { viewModel.obtenerProductos() }
                     )
                 }
             }
