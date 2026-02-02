@@ -5,8 +5,8 @@ import com.example.proyectointermodular_cliente.modelo.Usuario
 import retrofit2.http.Path
 
 interface UsuarioRepositorio{
-
     suspend fun obtenerUsuarios(): List<Usuario>
+    suspend fun crearUsuario(usuario: Usuario): Usuario
 }
 
 
@@ -19,5 +19,8 @@ class ConexionUsuarioRepositorio(
 
     override suspend fun obtenerUsuarios(): List<Usuario> =
         usuarioServicioApi.obtenerUsuario()
+
+    override suspend fun crearUsuario(usuario: Usuario): Usuario =
+        usuarioServicioApi.crearUsuario(usuario)
 }
 

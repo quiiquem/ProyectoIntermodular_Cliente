@@ -41,7 +41,7 @@ import com.example.proyectointermodular_cliente.R
 import org.intellij.lang.annotations.JdkConstants
 
 @Composable
-fun Registro(modifier: Modifier, onCrearCuenta: () -> Unit, onVolver: () -> Unit) {
+fun Registro(modifier: Modifier, onCrearCuenta: (String, String, String) -> Unit, onVolver: () -> Unit) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -152,7 +152,7 @@ fun Registro(modifier: Modifier, onCrearCuenta: () -> Unit, onVolver: () -> Unit
                         containerColor = Color(0xFF1E88E5)
                     ),
                     //Aun no pasa datos reales!!
-                    onClick = { onCrearCuenta() }
+                    onClick = { onCrearCuenta(username, password, email) }
 
                 ) {
                     Text(

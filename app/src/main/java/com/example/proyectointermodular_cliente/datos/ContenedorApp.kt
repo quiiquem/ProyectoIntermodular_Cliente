@@ -1,5 +1,6 @@
 package com.example.proyectointermodular_cliente.datos
 
+import com.example.proyectointermodular_cliente.conexion.FavoritosServicioApi
 import com.example.proyectointermodular_cliente.conexion.ProductoServicioApi
 import com.example.proyectointermodular_cliente.conexion.UsuarioServicioApi
 import retrofit2.Retrofit
@@ -12,6 +13,8 @@ interface ContenedorApp {
     //Poner todos los repositorios como variables
     val productoRepositorio: ProductoRepositorio
     val usuarioRepositorio: UsuarioRepositorio
+
+    val favoritosRepositorio: FavoritosRepositorio
 }
 
 //La parte de contenedorapp (que contenga la app)
@@ -44,5 +47,14 @@ private val servicioRetrofitUsuario: UsuarioServicioApi by lazy{
 }
     override val usuarioRepositorio: UsuarioRepositorio by lazy{
         ConexionUsuarioRepositorio(servicioRetrofitUsuario)
+    }
+
+//Favoritos
+
+    private val servicioRetrofitFavoritos: FavoritosServicioApi by lazy{
+        retrofit.create(FavoritosServicioApi::class.java)
+    }
+    override val favoritosRepositorio: FavoritosRepositorio by lazy{
+        ConexionFavoritosRepositorio(servicioRetrofitFavoritos)
     }
 }

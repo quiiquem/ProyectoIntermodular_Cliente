@@ -34,7 +34,7 @@ interface FavoritosServicioApi{
 
    @DELETE("favoritos/{producto_id}")
    suspend fun borrarFavorito(
-       @Body favoritos: Favoritos): Favoritos
+       @Body id: String): Favoritos
 }
 
 
@@ -44,6 +44,9 @@ interface UsuarioServicioApi{
 
     @GET("usuario")
     suspend fun obtenerUsuario(): List<Usuario>
+
+    @POST("usuario")
+    suspend fun crearUsuario(usuario: Usuario): Usuario
 }
 
 //Cliente
