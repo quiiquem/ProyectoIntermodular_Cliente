@@ -43,17 +43,9 @@ fun Navegacion_Sincuenta(
 
         composable(route = Pantallas.Register.name) {
             Registro(
-                onCrearCuenta = { username, password, email ->
-                    // Construye el objeto Usuario aquí
-                    val nuevoUsuario = Usuario(
-                        username = username,
-                        password = password,
-                        email = email
-                        // Añade otros campos que necesites
-                    )
-
+                onCrearCuenta = {
                     // Llama al ViewModel
-                    viewModel_U.crearUsuario(nuevoUsuario)
+                    viewModel_U.crearUsuario(it)
 
                     // Navega de vuelta al login
                     navController.navigate(Pantallas.Login.name) {
@@ -66,3 +58,5 @@ fun Navegacion_Sincuenta(
                 modifier = Modifier.fillMaxSize()
             )
         }
+    }
+}

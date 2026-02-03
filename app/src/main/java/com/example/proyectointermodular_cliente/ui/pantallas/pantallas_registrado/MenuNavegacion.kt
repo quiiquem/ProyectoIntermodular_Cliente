@@ -50,8 +50,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.onPrimaryDark
+import com.example.proyectointermodular_cliente.FavoritoViewModel
 import com.example.proyectointermodular_cliente.ProductoViewModel
 import com.example.proyectointermodular_cliente.R
+import com.example.proyectointermodular_cliente.UsuarioViewModel
 import com.example.proyectointermodular_cliente.datos.DrawerMenu
 import com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar.SeleccionarSesion
 import kotlinx.coroutines.CoroutineScope
@@ -75,6 +77,9 @@ fun MenuNavegacion(
     navController: NavHostController = rememberNavController(),
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
+    viewModel_P: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory),
+    viewModel_U: UsuarioViewModel = viewModel(factory = UsuarioViewModel.Factory),
+    viewModel_F: FavoritoViewModel = viewModel(factory = FavoritoViewModel.Factory)
 ){
     val pilaRetroceso by navController.currentBackStackEntryAsState()
 
@@ -118,11 +123,12 @@ fun MenuNavegacion(
                     PantallaInicial()
                 }
                 composable(route = Pantallas.Catalogo.name) {
-                    val viewModel: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory)
+
                     PantallaCatalogo(
                         modifier = Modifier.fillMaxSize(),
-                        productoUIState = viewModel.productoUIState,
-                        obtenerProductos = { viewModel.obtenerProductos()}
+                        obtenerProductos = { viewModel_P.obtenerProductos() },
+                        obtenerFavoritos = { viewModel_F.obtenerFavoritos()},
+                        anyadirFavorito = {viewModel_F.insertarFavorito(it)}
                     )
                 }
             }

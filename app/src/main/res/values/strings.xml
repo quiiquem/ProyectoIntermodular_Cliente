@@ -19,4 +19,6 @@
     <string name="descubrir_categorias">Search by category</string>
     <string name="favoritos">Favourites</string>
     <string name="lista_deseos_actual">Your current wishlist</string>
+    <string name="restante">left</string>
+    <string name="insertar_favorito">Add to wishlist</string>
 </resources>

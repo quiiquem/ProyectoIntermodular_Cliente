@@ -19,10 +19,10 @@ class MainActivity : ComponentActivity() {
 
                 //Ya iniciado sesion (esto es placeholder hasta que login
                 //tenga la navegacion indicada para ello)
-                MenuNavegacion()
+               // MenuNavegacion()
 
                 //No tiene cuenta = Se mete en esta pantalla
-                //Navegacion_Sincuenta(onLoginExitoso = {})
+                Navegacion_Sincuenta(onLoginExitoso = {})
             }
         }
     }

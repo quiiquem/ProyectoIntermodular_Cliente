@@ -38,10 +38,11 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.proyectointermodular_cliente.R
+import com.example.proyectointermodular_cliente.modelo.Usuario
 import org.intellij.lang.annotations.JdkConstants
 
 @Composable
-fun Registro(modifier: Modifier, onCrearCuenta: (String, String, String) -> Unit, onVolver: () -> Unit) {
+fun Registro(modifier: Modifier, onCrearCuenta: (usuario: Usuario) -> Unit, onVolver: () -> Unit) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -152,7 +153,12 @@ fun Registro(modifier: Modifier, onCrearCuenta: (String, String, String) -> Unit
                         containerColor = Color(0xFF1E88E5)
                     ),
                     //Aun no pasa datos reales!!
-                    onClick = { onCrearCuenta(username, password, email) }
+
+                    onClick = {
+                        val usuario = Usuario(nomusuario = username, contrasenya = password,
+                            email = email)
+                        onCrearCuenta(usuario)
+                    }
 
                 ) {
                     Text(

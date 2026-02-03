@@ -26,9 +26,7 @@ interface FavoritosServicioApi{
 
     @GET("favoritos")
     suspend fun obtenerFavoritos(): List<Favoritos>
-
-
-   @POST("favoritos/{producto_id}")
+   @POST("favoritos")
    suspend fun insertarFavorito(
        @Body favoritos: Favoritos): Favoritos
 
@@ -42,19 +40,27 @@ interface FavoritosServicioApi{
 
 interface UsuarioServicioApi{
 
-    @GET("usuario")
+    @GET("usuarios")
     suspend fun obtenerUsuario(): List<Usuario>
 
-    @POST("usuario")
-    suspend fun crearUsuario(usuario: Usuario): Usuario
+    @POST("usuarios")
+    suspend fun crearUsuario(@Body usuario: Usuario): Usuario
+
+    @PUT("usuarios/{id_usuario}")
+    suspend fun actualizarUsuario(@Path("id_usuario") id: String,
+        @Body usuario: Usuario): Usuario
+
+    @DELETE("usuarios/{id_usuario}")
+    suspend fun borrarUsuario(@Path("id_usuario") id: String): Usuario
 }
 
 //Cliente
 
 interface ClienteServicioApi{
 
-    @GET("cliente")
+    @GET("clientes")
     suspend fun obtenerCliente(): Cliente
+
 }
 
 //Categorias
