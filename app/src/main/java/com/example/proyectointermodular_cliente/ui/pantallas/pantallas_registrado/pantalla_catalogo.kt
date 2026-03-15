@@ -24,99 +24,67 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.proyectointermodular_cliente.ProductoUIState
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.proyectointermodular_cliente.R
-import com.example.proyectointermodular_cliente.UsuarioUIState
-import com.example.proyectointermodular_cliente.modelo.Favoritos
+
 import com.example.proyectointermodular_cliente.modelo.Producto
-import com.example.proyectointermodular_cliente.modelo.Usuario
+import com.example.proyectointermodular_cliente.modelo.usuarios.Usuario
+import com.example.proyectointermodular_cliente.viewmodel.ProductoViewModel
 
 
 @Composable
-fun PantallaCatalogo(
-    modifier: Modifier = Modifier,
-    productoUIState: ProductoUIState,
-    usuarioUIState: UsuarioUIState,
-    favoritosUIState: ProductoUIState,
-    obtenerProductos: () -> Unit,
-    obtenerFavoritos: () -> Unit,
-    insertarFavoritos: (favorito: Favoritos) -> Unit
-) {
+fun PantallaCatalogo(viewModel: ProductoViewModel) {
 
-    LaunchedEffect(Unit) {
-        obtenerProductos()
+
+    when {
+        viewModel.cargando -> PantallaCargando()
+        viewModel.error != null -> PantallaError()
+        else -> PantallaLista(viewModel.productos)
     }
+}
 
-    when (productoUIState) {
-        is ProductoUIState.Cargando -> PantallaCargando(modifier = modifier.fillMaxSize())
-        is ProductoUIState.Error -> PantallaError(modifier = modifier.fillMaxSize())
-        is ProductoUIState.Exito -> PantallaLista(
-            modifier = modifier.fillMaxSize(),
-            lista = productoUIState.productos,
-            lista_fav = favoritosUIState.,
-            onGuardarFav = TODO()
+@Composable
+fun PantallaCargando() {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(R.drawable.cargando),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
         )
     }
 }
 
 @Composable
-fun PantallaCargando(modifier: Modifier = Modifier){
-    Box(modifier = Modifier.fillMaxSize())
-    {
-        Image(
-            painter = painterResource(R.drawable.cargando),
-            contentDescription = null,
-            contentScale = ContentScale.Crop)
-    }
-}
-
-
-@Composable
-fun PantallaError(modifier: Modifier = Modifier){
-    Box(modifier = Modifier.fillMaxSize())
-    {
+fun PantallaError() {
+    Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(R.drawable.error),
             contentDescription = null,
-            contentScale = ContentScale.Crop)
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
 @Composable
-fun PantallaLista(modifier: Modifier = Modifier,
-                  lista: List<Producto>,
-                  onGuardarFav: (favorito: Favoritos) -> Unit){
-
-    LazyColumn(modifier = modifier){
-        items(lista){
-            producto ->
-
-            Box(modifier = Modifier
-                .padding(8.dp))
-            {
-                Column(modifier = Modifier.fillMaxWidth()){
-                    Text(
-                        text = producto.nombre
-                    )
-                    Text(
-                        text = "${producto.precio}€"
-                    )
-                    Text(
-                        text = "${producto.stock} ${stringResource(R.string.restante)}"
-                    )
-
-                    val favorito_nuevo = Favoritos(usuarioId = usuario.id, productoId = producto.id)
-                    FloatingActionButton(onClick = {onGuardarFav(favorito_nuevo)}) {
-                        Icon(
-                            imageVector = Icons.Filled.FavoriteBorder,
-                            contentDescription = (stringResource(R.string.insertar_favorito))
-                        )
-                    }
-                    HorizontalDivider()
-                }
+fun PantallaLista(productos: List<Producto>) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(productos) { producto ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text(text = producto.nombre, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Text(text = "${producto.precio}€")
+                Text(text = "${producto.categoria?.nombre}")
+                Text(text = "${producto.stock} ${stringResource(R.string.restante)}")
+                HorizontalDivider()
             }
         }
-
     }
 }

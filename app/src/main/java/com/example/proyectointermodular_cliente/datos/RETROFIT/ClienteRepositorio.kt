@@ -1,4 +1,4 @@
-package com.example.proyectointermodular_cliente.datos
+package com.example.proyectointermodular_cliente.datos.RETROFIT
 
 import com.example.proyectointermodular_cliente.conexion.ClienteServicioApi
 import com.example.proyectointermodular_cliente.modelo.Cliente

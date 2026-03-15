@@ -5,23 +5,24 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Cliente(
+    @SerialName("id_cliente")
+    val id: Long = 0,
 
-    @SerialName(value = "IDUsuario")
-    val IDUsuario: Int = 0,
-    @SerialName(value = "nombre")
-    val nombre: String,
-    @SerialName(value = "apellido1")
-    val apellido1: String,
-    @SerialName(value = "apellido2")
-    val apellido2: String,
-    @SerialName(value = "pais")
-    val pais: String,
-    @SerialName(value = "ciudad")
-    val ciudad: String,
-    @SerialName(value = "codpostal")
-    val codpostal: Int,
-    @SerialName(value = "provincia")
-    val provincia: String,
-    @SerialName(value = "telefono")
-    val telefono: Int
+    @SerialName("usuario_id")
+    val usuarioId: Long = 0,
+
+    @SerialName("dni")
+    val dni: String?,
+
+    @SerialName("nombre")
+    val nombre: String?,
+
+    @SerialName("apellidos")
+    val apellidos: String,
+
+    @SerialName("direccion")
+    val direccion: String?,
+
+    @SerialName("telefono")
+    val telefono: String?
 )

@@ -16,7 +16,10 @@ squareupOkhttp3 = "4.11.0"
 serialization = "1.9.10"
 navigation="2.8.3"
 uiTextGoogleFonts = "1.10.1"
-
+room = "2.6.1"
+datastore = "1.1.1"
+ksp = "2.0.21-1.0.28"
+loggingInterceptor = "4.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +43,11 @@ jakewharton-retrofit = { group = "com.jakewharton.retrofit", name = "retrofit2-k
 squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "squareupOkhttp3"}
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation"}
 androidx-compose-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+squareup-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -47,4 +55,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization"}
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

@@ -1,6 +1,6 @@
 package com.example.proyectointermodular_cliente.conexion
 import com.example.proyectointermodular_cliente.modelo.Cliente
-import com.example.proyectointermodular_cliente.modelo.Favoritos
+import com.example.proyectointermodular_cliente.modelo.Favorito
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -9,7 +9,32 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 import com.example.proyectointermodular_cliente.modelo.Producto
-import com.example.proyectointermodular_cliente.modelo.Usuario
+import com.example.proyectointermodular_cliente.modelo.usuarios.Usuario
+import com.example.proyectointermodular_cliente.modelo.springtool.APIResponse
+import com.example.proyectointermodular_cliente.modelo.springtool.LoginRequest
+import com.example.proyectointermodular_cliente.modelo.springtool.LoginResponse
+import com.example.proyectointermodular_cliente.modelo.usuarios.RegistroRequest
+
+
+//Usuario
+
+interface UsuarioServicioApi {
+    @POST("auth/login")
+    suspend fun login(@Body request: LoginRequest): APIResponse<LoginResponse>
+
+    @POST("auth/registro")
+    suspend fun registro(@Body usuario: RegistroRequest): APIResponse<Usuario> //Mandar un registrorequest y recibir un usuario
+}
+
+//Cliente
+
+interface ClienteServicioApi{
+
+    @GET("cliente")
+    suspend fun obtenerCliente(): Cliente
+}
+
+
 
 //Productos
 
@@ -18,6 +43,9 @@ interface ProductoServicioApi{
     suspend fun obtenerProductos(): List<Producto>
     @GET("productos") //lo mismo que favorito solo que este dudo bastante que se pueda hacer asi
     suspend fun comprarProductos(): List<Producto>
+
+    @GET("productos")
+    suspend fun listarProductos(): APIResponse<List<Producto>>
 }
 
 //Favoritos
@@ -25,43 +53,18 @@ interface ProductoServicioApi{
 interface FavoritosServicioApi{
 
     @GET("favoritos")
-    suspend fun obtenerFavoritos(): List<Favoritos>
-   @POST("favoritos")
-   suspend fun insertarFavorito(
-       @Body favoritos: Favoritos): Favoritos
+    suspend fun obtenerFavoritos(): List<Favorito>
 
-   @DELETE("favoritos/{producto_id}")
-   suspend fun borrarFavorito(
-       @Body id: String): Favoritos
+
+    @POST("favoritos/")
+    suspend fun insertarFavorito(
+        @Body favoritos: Favorito): Favorito
+
+    @DELETE("favoritos/")
+    suspend fun borrarFavorito(
+        @Body favoritos: Favorito): Favorito
 }
 
-
-//Usuario
-
-interface UsuarioServicioApi{
-
-    @GET("usuarios")
-    suspend fun obtenerUsuario(): List<Usuario>
-
-    @POST("usuarios")
-    suspend fun crearUsuario(@Body usuario: Usuario): Usuario
-
-    @PUT("usuarios/{id_usuario}")
-    suspend fun actualizarUsuario(@Path("id_usuario") id: String,
-        @Body usuario: Usuario): Usuario
-
-    @DELETE("usuarios/{id_usuario}")
-    suspend fun borrarUsuario(@Path("id_usuario") id: String): Usuario
-}
-
-//Cliente
-
-interface ClienteServicioApi{
-
-    @GET("clientes")
-    suspend fun obtenerCliente(): Cliente
-
-}
 
 //Categorias
 

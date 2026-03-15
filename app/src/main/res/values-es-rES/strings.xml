@@ -21,4 +21,5 @@
     <string name="lista_deseos_actual">Tu lista de deseos actual</string>
     <string name="restante">restantes</string>
     <string name="insertar_favorito">Añadir a lista de deseos</string>
+    <string name="bienvenido">Bienvenido,</string>
 </resources>

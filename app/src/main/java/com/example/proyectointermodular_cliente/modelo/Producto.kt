@@ -6,20 +6,27 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Producto(
-    @SerialName(value = "producto_id")
-    val id: Int = 0,
-    @SerialName(value = "nombre")
+    @SerialName("id_producto")
+    val id: Long = 0,
+
+    @SerialName("nombre")
     val nombre: String,
-    @SerialName(value = "precio")
+
+    @SerialName("precio")
     val precio: Double,
-    @SerialName(value = "stock")
-    val stock: Int,
-    //Para evitar problemas por ahora fecha es un string
-    @SerialName(value = "fecha_alta")
-    val fecha_ingreso: String,
-    @SerialName(value = "ubicacion")
-    val ubicacion: String,
-    //Por ahora es un int , cuando pueda hacer claves ajenas y eso lo cambiare prob
-    @SerialName(value = "categoriaId")
-    val categoriaID: Int
+
+    @SerialName("imagen_url")
+    val imagenUrl: String? = null,
+
+    @SerialName("stock")
+    val stock: Int = 0,
+
+    @SerialName("fecha_alta")
+    val fechaAlta: String? = null,
+
+    @SerialName("categoria")
+    val categoria: Categoria? = null,
+
+    @SerialName("ubicacion")
+    val ubicacion: Ubicaciones? = null
 )

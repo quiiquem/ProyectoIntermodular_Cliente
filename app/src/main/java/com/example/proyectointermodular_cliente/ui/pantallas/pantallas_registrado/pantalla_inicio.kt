@@ -63,25 +63,31 @@ fun PantallaInicial() {
             item {
                 CategoriaCard(
                     nombre = "ANIME & MANGA",
-                    imagenRes = R.drawable.categoria_anime // ← Header morado con Goku/Pikachu
+                    imagenRes = R.drawable.categoria_anime
                 )
             }
             item {
                 CategoriaCard(
                     nombre = "MARVEL & DC",
-                    imagenRes = R.drawable.categoria_superheroes // ← Header rojo con Iron Man
+                    imagenRes = R.drawable.categoria_superheroes
                 )
             }
             item {
                 CategoriaCard(
                     nombre = "CINE Y SERIES",
-                    imagenRes = R.drawable.categoria_cine_y_series // ← Header azul con Batman
+                    imagenRes = R.drawable.categoria_cine_y_series
                 )
             }
             item {
                 CategoriaCard(
-                    nombre = "Gaming",
-                    imagenRes = R.drawable.categoria_anime // ← Header verde con Mario
+                    nombre = "DISNEY",
+                    imagenRes = R.drawable.categoria_disney
+                )
+            }
+            item {
+                CategoriaCard(
+                    nombre = "VIDEOJUEGOS",
+                    imagenRes = R.drawable.categoria_videojuegos
                 )
             }
         }

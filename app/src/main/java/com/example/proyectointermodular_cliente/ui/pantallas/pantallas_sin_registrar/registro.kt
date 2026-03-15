@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,11 +39,23 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.proyectointermodular_cliente.R
-import com.example.proyectointermodular_cliente.modelo.Usuario
+import com.example.proyectointermodular_cliente.viewmodel.LoginUiState
+import com.example.proyectointermodular_cliente.viewmodel.UsuarioViewModel
 import org.intellij.lang.annotations.JdkConstants
 
 @Composable
-fun Registro(modifier: Modifier, onCrearCuenta: (usuario: Usuario) -> Unit, onVolver: () -> Unit) {
+fun Registro(
+    modifier: Modifier,
+    onCrearCuenta: () -> Unit,
+    onVolver: () -> Unit,
+    viewModel: UsuarioViewModel
+) {
+
+    val uiState = viewModel.loginUiState
+
+    LaunchedEffect(uiState) {
+        if (uiState is LoginUiState.RegistroExito) onCrearCuenta()
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -153,12 +166,7 @@ fun Registro(modifier: Modifier, onCrearCuenta: (usuario: Usuario) -> Unit, onVo
                         containerColor = Color(0xFF1E88E5)
                     ),
                     //Aun no pasa datos reales!!
-
-                    onClick = {
-                        val usuario = Usuario(nomusuario = username, contrasenya = password,
-                            email = email)
-                        onCrearCuenta(usuario)
-                    }
+                    onClick = { viewModel.registro(username, password, email) }
 
                 ) {
                     Text(
@@ -168,6 +176,14 @@ fun Registro(modifier: Modifier, onCrearCuenta: (usuario: Usuario) -> Unit, onVo
                         fontWeight = FontWeight.Bold
                     )
                 }
+            }
+
+            if (uiState is LoginUiState.Error) {
+                Text(
+                    text = (uiState as LoginUiState.Error).mensaje,
+                    color = Color.Red,
+                    modifier = Modifier.padding(16.dp)
+                )
             }
 
             Spacer(modifier = Modifier.height(10.dp ))

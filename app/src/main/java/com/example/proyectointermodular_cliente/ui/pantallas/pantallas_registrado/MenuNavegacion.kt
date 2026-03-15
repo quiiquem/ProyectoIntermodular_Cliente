@@ -43,6 +43,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -50,12 +51,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.onPrimaryDark
-import com.example.proyectointermodular_cliente.FavoritoViewModel
-import com.example.proyectointermodular_cliente.ProductoViewModel
+
 import com.example.proyectointermodular_cliente.R
-import com.example.proyectointermodular_cliente.UsuarioViewModel
+
 import com.example.proyectointermodular_cliente.datos.DrawerMenu
 import com.example.proyectointermodular_cliente.ui.pantallas.pantallas_sin_registrar.SeleccionarSesion
+import com.example.proyectointermodular_cliente.viewmodel.ProductoViewModel
+import com.example.proyectointermodular_cliente.viewmodel.UsuarioViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -77,9 +79,9 @@ fun MenuNavegacion(
     navController: NavHostController = rememberNavController(),
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
-    viewModel_P: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory),
+
     viewModel_U: UsuarioViewModel = viewModel(factory = UsuarioViewModel.Factory),
-    viewModel_F: FavoritoViewModel = viewModel(factory = FavoritoViewModel.Factory)
+    viewModel_P: ProductoViewModel = viewModel(factory = ProductoViewModel.Factory),
 ){
     val pilaRetroceso by navController.currentBackStackEntryAsState()
 
@@ -93,14 +95,15 @@ fun MenuNavegacion(
             ModalDrawerSheet {
                 DrawerContent(
                     menu = menu,
-                    pantallaActual = pantallaActual
-                ) { ruta ->
-                    coroutineScope.launch {
-                        drawerState.close()
-                    }
-
-                    navController.navigate(ruta)
-                }
+                    pantallaActual = pantallaActual,
+                    onMenuClick = { ruta ->
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        navController.navigate(ruta)
+                    },
+                    viewModel_U = viewModel_U
+                )
             }
         },
     ) {
@@ -123,13 +126,7 @@ fun MenuNavegacion(
                     PantallaInicial()
                 }
                 composable(route = Pantallas.Catalogo.name) {
-
-                    PantallaCatalogo(
-                        modifier = Modifier.fillMaxSize(),
-                        obtenerProductos = { viewModel_P.obtenerProductos() },
-                        obtenerFavoritos = { viewModel_F.obtenerFavoritos()},
-                        anyadirFavorito = {viewModel_F.insertarFavorito(it)}
-                    )
+                    PantallaCatalogo(viewModel = viewModel_P)
                 }
             }
         }
@@ -141,8 +138,9 @@ fun MenuNavegacion(
 private fun DrawerContent(
     menu: Array<DrawerMenu>,
     pantallaActual: Pantallas,
-    onMenuClick: (String) -> Unit
-) {
+    onMenuClick: (String) -> Unit,
+    viewModel_U: UsuarioViewModel
+){
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -160,7 +158,7 @@ private fun DrawerContent(
                     contentScale = ContentScale.Fit
                 )
                 Text(
-                    "[Nombre del usuario ira aquí]",
+                    "${stringResource(R.string.bienvenido)} ${viewModel_U.usuarioActual?.username ?: ""}!",
                     modifier = Modifier.width(300.dp)
                     ,textAlign = TextAlign.Center
                 )
